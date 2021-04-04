@@ -1,14 +1,14 @@
-document.querySelector('.menu-abrir').onclick = function(){
-    document.documentElement.classList.add("menu-ativo");
-    console.log("deu certo");
-};
+const menu = document.querySelectorAll('.menu__active');
+menu[0].nextElementSibling.classList.add('ativo');
+menu[0].classList.add('ativo');
 
-document.querySelector('.menu-fechar').onclick = function(){
-    document.documentElement.classList.remove("menu-ativo");
-};
+function initTab(event){
+    event.preventDefault();
 
-document.documentElement.onclick = function(event){
-    if(event.target === document.documentElement){
-        document.documentElement.classList.remove("menu-ativo");
-    }
-};
+    event.currentTarget.classList.toggle('ativo')
+    event.currentTarget.nextElementSibling.classList.toggle('ativo')
+    
+}
+menu.forEach(item => {
+    item.addEventListener('click', initTab)
+});
